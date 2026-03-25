@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainsta Asnamarch Pratama | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .logo span {
+            color: #10b981;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            animation: fadeIn 0.8s ease-out 0.1s both;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #10b981;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #10b981;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section.hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 80vh;
+            padding: 4rem 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero .title {
+            font-size: 1.3rem;
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: #666666;
+            margin-bottom: 3rem;
+            max-width: 500px;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #10b981;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            background-color: #059669;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(5, 150, 105, 0.3);
+        }
+
+        section.about {
+            padding: 6rem 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        section.about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555555;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        section.contact {
+            padding: 6rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            border-radius: 16px;
+            margin: 4rem 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-header h2 {
+            margin-bottom: 0;
+        }
+
+        .online-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #d1fae5;
+            color: #065f46;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        section.contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .contact-text {
+            color: #666666;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.8rem;
+            background-color: #ffffff;
+            color: #2c3e50;
+            text-decoration: none;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            gap: 0.6rem;
+        }
+
+        .contact-link:hover {
+            border-color: #10b981;
+            color: #10b981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .contact-link.email:hover {
+            background-color: #ecfdf5;
+        }
+
+        .contact-link.github:hover {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border-color: #1a1a1a;
+        }
+
+        .contact-link.linkedin:hover {
+            background-color: #0a66c2;
+            color: #ffffff;
+            border-color: #0a66c2;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 4rem;
+            font-size: 0.95rem;
+            border-top: 1px solid #34495e;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: #6366f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #818cf8;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            nav a {
+                padding: 0.6rem 0;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                word-break: break-word;
+            }
+
+            .hero .title {
+                font-size: 1.1rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            section.about h2,
+            section.contact h2 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 0 1.5rem;
+            }
+
+            section.hero {
+                min-height: 70vh;
+                padding: 3rem 0;
+            }
+
+            section.about,
+            section.contact {
+                padding: 3rem 2rem;
+            }
+
+            .about-text {
+                line-height: 1.8;
+            }
+
+            .contact-header {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .contact-links {
+                gap: 1rem;
+            }
+
+            .contact-link {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 1.2rem 0;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            nav ul {
+                gap: 0.6rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            main {
+                padding: 0 1.2rem;
+            }
+
+            section.hero {
+                min-height: 65vh;
+                padding: 2.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .title {
+                font-size: 1rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.95rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                width: 90%;
+                max-width: 300px;
+                font-size: 0.95rem;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            section.about h2,
+            section.contact h2 {
+                font-size: 1.8rem;
+            }
+
+            section.about,
+            section.contact {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .about-text {
+                font-size: 0.95rem;
+                line-height: 1.8;
+            }
+
+            .contact-text {
+                font-size: 0.95rem;
+            }
+
+            .contact-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .online-status {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .contact-links {
+                gap: 0.8rem;
+            }
+
+            .contact-link {
+                width: 100%;
+                padding: 1rem 1rem;
+                font-size: 0.9rem;
+                min-height: 48px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem 0;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            nav {
+                gap: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+                padding: 0.5rem 0;
+            }
+
+            main {
+                padding: 0 1rem;
+            }
+
+            section.hero {
+                min-height: 60vh;
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+                margin-bottom: 0.8rem;
+                line-height: 1.1;
+            }
+
+            .hero .title {
+                font-size: 0.95rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.9rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+            }
+
+            .cta-button {
+                padding: 0.95rem 1.8rem;
+                font-size: 0.9rem;
+                width: 85%;
+                max-width: 280px;
+                min-height: 44px;
+            }
+
+            section.about h2,
+            section.contact h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            section.about,
+            section.contact {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+
+            .contact-header {
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .online-status {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .online-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .about-text {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+
+            .about-text p {
+                margin-bottom: 1rem;
+            }
+
+            .contact-text {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-links {
+                gap: 0.6rem;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-link {
+                width: 100%;
+                padding: 0.95rem 1rem;
+                font-size: 0.85rem;
+                min-height: 44px;
+                border-radius: 6px;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            footer p {
+                margin: 0.8rem 0;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero .title {
+                font-size: 0.9rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.85rem;
+            }
+
+            section.about h2,
+            section.contact h2 {
+                font-size: 1.3rem;
+            }
+
+            .cta-button {
+                width: 80%;
+                padding: 0.9rem 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .contact-link {
+                font-size: 0.8rem;
+                padding: 0.8rem 0.8rem;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #0f1419;
+                color: #e8eef2;
+            }
+
+            header {
+                background-color: #1a1f2a;
+                border-bottom-color: #2a3142;
+            }
+
+            .logo {
+                color: #e8eef2;
+            }
+
+            nav a {
+                color: #e8eef2;
+            }
+
+            nav a:hover {
+                color: #34d399;
+            }
+
+            nav a::after {
+                background-color: #34d399;
+            }
+
+            .hero h1 {
+                color: #e8eef2;
+            }
+
+            .hero .title {
+                color: #34d399;
+            }
+
+            .hero .tagline {
+                color: #a0aec0;
+            }
+
+            .cta-button {
+                background-color: #10b981;
+                box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            }
+
+            .cta-button:hover {
+                background-color: #34d399;
+                box-shadow: 0 6px 25px rgba(52, 211, 153, 0.4);
+            }
+
+            section.about h2,
+            section.contact h2 {
+                color: #e8eef2;
+            }
+
+            .about-text {
+                color: #cbd5e0;
+            }
+
+            section.contact {
+                background: linear-gradient(135deg, #1a1f2a 0%, #151a26 100%);
+            }
+
+            .online-status {
+                background-color: #064e3b;
+                color: #d1fae5;
+            }
+
+            .contact-text {
+                color: #a0aec0;
+            }
+
+            .contact-link {
+                background-color: #1f263a;
+                color: #e8eef2;
+                border-color: #2a3142;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .contact-link:hover {
+                border-color: #34d399;
+                color: #34d399;
+                box-shadow: 0 4px 12px rgba(52, 211, 153, 0.2);
+            }
+
+            .contact-link.email:hover {
+                background-color: #1a1f2a;
+            }
+
+            .contact-link.github:hover {
+                background-color: #e8eef2;
+                color: #0f1419;
+                border-color: #e8eef2;
+            }
+
+            .contact-link.linkedin:hover {
+                background-color: #0a66c2;
+                color: #ffffff;
+                border-color: #0a66c2;
+            }
+
+            footer {
+                background-color: #1a1f2a;
+                color: #cbd5e0;
+                border-top-color: #2a3142;
+            }
+
+            footer a {
+                color: #34d399;
+            }
+
+            footer a:hover {
+                color: #6ee7b7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo"><span>R</span>ainsta</a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <h1>Rainsta Asnamarch Pratama</h1>
+            <p class="title">curious student</p>
+            <p class="tagline">Building things, learning continuously, and exploring the endless possibilities of technology.</p>
+            <a href="#contact" class="cta-button">Get in Touch</a>
+        </section>
+
+        <section class="about" id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a passionate and curious learner who loves exploring ideas at the intersection of technology and human experience. 
+                        With a keen interest in web development and design, I enjoy creating clean, intuitive digital experiences.
+                    </p>
+                    <p>
+                        When I'm not coding or designing, you'll find me reading, experimenting with new technologies, or contemplating life's big questions. 
+                        I believe in continuous learning and the power of collaboration to create meaningful solutions.
+                    </p>
+                    <p>
+                        Let's connect and create something amazing together!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Let's Connect</h2>
+            <p class="contact-text">Feel free to reach out through any of these channels:</p>
+            <div class="contact-links">
+                <a href="mailto:rainsta1658@gmail.com" class="contact-link email">
+                    Email
+                </a>
+                <a href="https://github.com/rainsta-ap" class="contact-link github" target="_blank" rel="noopener noreferrer">
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/rainsta" class="contact-link linkedin" target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                </a>
+                <a href="https://instagram.com/sec.lastme" class="contact-link instagram" target="_blank" rel="noopener noreferrer">
+                    Instagram
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Rainsta Asnamarch Pratama. All rights reserved.</p>
+        <p>Handcrafted with <span style="color: #e94b3c;">♥</span> using HTML & CSS.</p>
+    </footer>
+</body>
+</html>
